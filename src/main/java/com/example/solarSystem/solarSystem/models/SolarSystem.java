@@ -1,6 +1,7 @@
 package com.example.solarSystem.solarSystem.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -17,18 +18,16 @@ public class SolarSystem {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "planets")
-    private ArrayList<Planet> planets;
-
-    @JsonIgnore
-    @OneToMany
-    private List<Planet> planetIds;
+    @JsonIgnoreProperties("solarSystem")
+    @OneToMany(mappedBy = "solarSystem")
+    private List<Planet> planets;
 
 
-    public SolarSystem(String name, Planet planet){
+
+    public SolarSystem(String name){
         this.name = name;
         this.planets = new ArrayList<Planet>();
-        this.planetIds = new ArrayList<Planet>();
+
     }
 
     public SolarSystem(){}
@@ -49,8 +48,8 @@ public class SolarSystem {
         this.name = name;
     }
 
-    public ArrayList<Planet> getPlanets() {
-        return planets;
+    public List<Planet> getPlanets() {
+        return this.planets;
     }
 
     public void setPlanets(ArrayList<Planet> planets) {

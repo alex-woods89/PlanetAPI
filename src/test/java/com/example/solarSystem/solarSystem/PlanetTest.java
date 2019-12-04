@@ -14,7 +14,7 @@ public class PlanetTest {
 
     @Before
     public void before(){
-        earth = new Planet("Earth", 1000, true, moon);
+        earth = new Planet("Earth", 1000, true);
         moon = new Moon("The Moon", 100);
     }
 

@@ -20,8 +20,8 @@ public class SolarSystemTest {
     @Before
     public void before(){
         moon = new Moon("The Moon", 100);
-        planet = new Planet("Earth", 1000, true, moon);
-        solarSystem = new SolarSystem("Milky Way", planet);
+        planet = new Planet("Earth", 1000, true);
+        solarSystem = new SolarSystem("Milky Way");
 
         planet.addMoon(moon);
         solarSystem.addPlanet(planet);
@@ -68,7 +68,7 @@ public class SolarSystemTest {
 
     @Test
     public void canGetNumberOfHabitablePlanets(){
-        Planet saturn = new Planet("saturn", 1000, false, moon);
+        Planet saturn = new Planet("saturn", 1000, false);
         solarSystem.addPlanet(saturn);
         assertEquals(1, solarSystem.getNumberOfHabitablePlanets());
     }

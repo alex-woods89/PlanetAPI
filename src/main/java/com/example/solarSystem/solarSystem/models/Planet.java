@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "planets")
@@ -19,19 +20,23 @@ public class Planet {
     @Column(name = "mass")
     private int mass;
 
-    @Column(name = "moons")
-    private ArrayList<Moon> moons;
+    @JsonIgnoreProperties("planet")
+    @OneToMany(mappedBy = "planet")
+
+    private List<Moon> moons;
 
     @Column(name = "habitable")
     private boolean habitable;
 
+    @JsonIgnoreProperties("planets")
     @ManyToOne
+    @JoinColumn(name = "solarSystem_id")
     private SolarSystem solarSystem;
 
 
 
 
-    public Planet(String name, int mass, boolean habitable, Moon moon){
+    public Planet(String name, int mass, boolean habitable){
         this.name = name;
         this.moons = new ArrayList<Moon>();
         this.mass = mass;
@@ -66,7 +71,7 @@ public class Planet {
         this.name = name;
     }
 
-    public ArrayList<Moon> getMoons() {
+    public List<Moon> getMoons() {
         return moons;
     }
 
