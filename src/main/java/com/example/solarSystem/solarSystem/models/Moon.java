@@ -18,9 +18,7 @@ public class Moon {
     @Column(name = "mass")
     private int mass;
 
-    @JsonIgnoreProperties("solarSystem")
     @ManyToOne
-    @JoinColumn(name = "planet_id")
     private Planet planet;
 
 

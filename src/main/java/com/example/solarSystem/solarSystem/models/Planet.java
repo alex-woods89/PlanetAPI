@@ -25,10 +25,10 @@ public class Planet {
     @Column(name = "habitable")
     private boolean habitable;
 
-    @JsonIgnoreProperties("solarSystem")
     @ManyToOne
-    @JoinColumn(name = "solarSystem_id")
     private SolarSystem solarSystem;
+
+
 
 
     public Planet(String name, int mass, boolean habitable, Moon moon){
