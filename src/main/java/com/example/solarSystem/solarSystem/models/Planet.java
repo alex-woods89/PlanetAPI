@@ -22,7 +22,6 @@ public class Planet {
 
     @JsonIgnoreProperties("planet")
     @OneToMany(mappedBy = "planet")
-
     private List<Moon> moons;
 
     @Column(name = "habitable")
@@ -36,7 +35,7 @@ public class Planet {
 
 
 
-    public Planet(String name, int mass, boolean habitable){
+    public Planet(String name, int mass, boolean habitable, List<Moon> moons){
         this.name = name;
         this.moons = new ArrayList<Moon>();
         this.mass = mass;

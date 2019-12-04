@@ -5,6 +5,9 @@ import com.example.solarSystem.solarSystem.models.Planet;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 public class PlanetTest {
@@ -14,8 +17,10 @@ public class PlanetTest {
 
     @Before
     public void before(){
-        earth = new Planet("Earth", 1000, true);
         moon = new Moon("The Moon", 100);
+        List<Moon> moons = new ArrayList<Moon>();
+        earth = new Planet("Earth", 1000, true, moons);
+
     }
 
     @Test

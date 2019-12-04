@@ -6,6 +6,9 @@ import com.example.solarSystem.solarSystem.models.SolarSystem;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 
 public class SolarSystemTest {
@@ -20,7 +23,8 @@ public class SolarSystemTest {
     @Before
     public void before(){
         moon = new Moon("The Moon", 100);
-        planet = new Planet("Earth", 1000, true);
+        List<Moon> moons = new ArrayList<>();
+        planet = new Planet("Earth", 1000, true, moons);
         solarSystem = new SolarSystem("Milky Way");
 
         planet.addMoon(moon);
@@ -68,7 +72,8 @@ public class SolarSystemTest {
 
     @Test
     public void canGetNumberOfHabitablePlanets(){
-        Planet saturn = new Planet("saturn", 1000, false);
+        List<Moon> moons = new ArrayList<>();
+        Planet saturn = new Planet("saturn", 1000, false, moons);
         solarSystem.addPlanet(saturn);
         assertEquals(1, solarSystem.getNumberOfHabitablePlanets());
     }

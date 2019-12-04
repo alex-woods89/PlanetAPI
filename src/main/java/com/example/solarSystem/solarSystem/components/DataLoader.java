@@ -12,6 +12,9 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Component
 public class DataLoader implements ApplicationRunner {
 
@@ -27,10 +30,14 @@ public class DataLoader implements ApplicationRunner {
     public DataLoader(){}
 
     public void run(ApplicationArguments args){
+        List<Moon> moons = new ArrayList<>();
+
+
         Moon moon1 = new Moon("The Moon", 100);
+        moons.add(moon1);
         moonRepository.save(moon1);
 
-        Planet planet1 = new Planet("Earth", 1000, true);
+        Planet planet1 = new Planet("Earth", 1000, true, moons);
         planetRepository.save(planet1);
 
         SolarSystem solarSystem = new SolarSystem("Milky Way");
